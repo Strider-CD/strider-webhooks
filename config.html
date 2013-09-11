@@ -25,7 +25,7 @@
             <th>Shared secret for HMAC-SHA1 signatire</th>
           </thead>
           <tbody>
-            <tr ng-repeat="hook in hooks">
+            <tr ng-repeat-start="hook in hooks">
               <td>[[ hook.title ]]</td>
               <td>[[ hook.url ]]</td>
               <td>[[ hook.secret ]]</td>
@@ -34,6 +34,14 @@
                 <span ng-switch-default class="clickable" ng-click="remove(hook)">
                   <i class="icon-remove"></i>
                 </span>
+              </td>
+            </tr>
+            <tr ng-repeat-end>
+              <td colspan="4">
+                <textarea
+                   placeholder="You can put a custom payload format here"
+                   ng-model="hook.format">
+                </textarea>
               </td>
             </tr>
             <tr ng-show="!hooks.length" class="no-hooks">
