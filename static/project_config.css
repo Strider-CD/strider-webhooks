@@ -1,8 +1,0 @@
-#project_config_webhooks .input-append input {
-  display: block;
-  width: 100%;
-}
-#project_config_webhooks textarea {
-  width: 100%;
-  box-sizing: border-box;
-}

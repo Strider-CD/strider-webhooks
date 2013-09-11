@@ -22,18 +22,17 @@
           <thead>
             <th>Hook Title</th>
             <th>TargetURL for HTTP Post</th>
-            <th>Shared secret for HMAC-SHA1 signatire</th>
+            <th>Shared secret for HMAC-SHA1 signature</th>
           </thead>
           <tbody>
             <tr ng-repeat-start="hook in hooks">
-              <td>[[ hook.title ]]</td>
-              <td>[[ hook.url ]]</td>
-              <td>[[ hook.secret ]]</td>
-              <td class="remove" ng-switch="hook.loading">
-                <i ng-switch-when="true" class="icon-cog icon-spin"></i>
-                <span ng-switch-default class="clickable" ng-click="remove(hook)">
+              <td><input ng-model="hook.title"></td>
+              <td><input ng-model="hook.url"</td>
+              <td><input ng-model="hook.secret"></td>
+              <td class="remove">
+                <button class="btn btn-danger" ng-disabled="saving" ng-click="remove(hook)">
                   <i class="icon-remove"></i>
-                </span>
+                </button>
               </td>
             </tr>
             <tr ng-repeat-end>
@@ -44,26 +43,10 @@
                 </textarea>
               </td>
             </tr>
-            <tr ng-show="!hooks.length" class="no-hooks">
-              <td colspan="3">No webhooks registered. Add one!</td>
-            </tr>
           </tbody>
         </table>
-      </div>
-      <div class="span3">
-        <div class="control-group">
-          <div class="controls">
-            <div class="input-append">
-              <input ng-model="new_title"
-                     placeholder="Hook title" class="span2"/>
-              <input ng-model="new_url" type="text"
-                     placeholder="target URL" class="webhook-target-url span2"/>
-              <input ng-model="new_secret" type="text"
-                     placeholder="HMAC-SHA1 secret" class="webhook-secret span2"/>
-            </div>
-            <button class="btn" ng-click="add()">Add</button>
-          </div>
-        </div>
+        <button class="btn btn-success" ng-click="add()" ng-disabled="saving">Add</button>
+        <button class="btn" ng-click="save()" ng-disabled="saving">Save Hooks</button>
       </div>
     </div>
   </fieldset>
