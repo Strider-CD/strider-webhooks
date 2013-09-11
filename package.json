@@ -18,7 +18,15 @@
   "author": "Jared Forsyth <jared@jaredforsyth.com>",
   "license": "MIT",
   "strider": {
+    "type": "job",
     "id": "webhooks",
-    "worker": "index.js"
+    "title": "Webhooks",
+    "worker": "lib/worker.js",
+    "webapp": "lib/webapp.js",
+    "icon": "icon.png",
+    "panel": {
+      "src": "config.html",
+      "controller": "WebhooksController"
+    }
   }
 }

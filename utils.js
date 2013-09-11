@@ -19,18 +19,16 @@ function fire(url, secret, payload) {
     .send(body)
 }
 
-var DEFAULT_FORMATS = {
-  'job.done': {
-    // job data
-    project: 'job.project.name',
-    github_commit_id: 'job.ref.id',
-    repo_url: 'job.project.provider.url',
-    // results
-    deploy_exitcode: 'data.deploy_status',
-    test_exitcode: 'data.test_status',
-    finish_time: 'data.finished',
-    start_time: 'data.started'
-  }
+var DEFAULT_FORMAT = {
+  // job data
+  project: 'job.project.name',
+  github_commit_id: 'job.ref.id',
+  repo_url: 'job.project.provider.url',
+  // results
+  deploy_exitcode: 'data.deploy_status',
+  test_exitcode: 'data.test_status',
+  finish_time: 'data.finished',
+  start_time: 'data.started'
 }
 
 function crawlTree(obj, fn) {
@@ -54,35 +52,18 @@ function getHookValue(data, job, key) {
   }, { data: data, job: job })
 }
 
-function makeHook(trigger, format, job) {
-  format = format || DEFAULT_FORMATS[trigger]
-  if (!format) {
-    throw new Error('No default format for "' + trigger + '" and no format provided.')
-  }
+function makeHook(format, job) {
+  format = format || DEFAULT_FORMAT
   return function (data, job) {
-    if (data.length === 1) data = args[0]
     return crawlTree(format, getHookValue.bind(null, data, job))
   }
 }
 
 function makeWebHooks(hooks, job) {
-  var triggers = []
-    , tmap = {}
-    , trigger
-    , hook
-    , def
+  var hook
   for (var i=0; i<hooks.length; i++) {
     hook = hooks[i]
-    trigger = tmap[hook.trigger]
-    if (!trigger) {
-      trigger = tmap[hook.trigger] = {
-        event: hook.trigger,
-        hooks: []
-      }
-      triggers.push(trigger)
-    }
-    hook.prepare = makeHook(hook.trigger, hook.format, job)
-    trigger.hooks.push(hook)
+    hook.prepare = makeHook(hook.format, job)
   }
-  return triggers
+  return hooks
 }
