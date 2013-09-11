@@ -1,6 +1,6 @@
 var ObjectID = require('bson').ObjectID
 
-  , utils = require('./utils')
+  , utils = require('./lib/utils')
 
 module.exports = {
   config: [{
