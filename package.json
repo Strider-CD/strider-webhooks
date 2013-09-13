@@ -21,8 +21,8 @@
     "type": "job",
     "id": "webhooks",
     "title": "Webhooks",
-    "worker": "lib/worker.js",
-    "webapp": "lib/webapp.js",
+    "worker": "worker.js",
+    "webapp": "webapp.js",
     "icon": "icon.png",
     "panel": {
       "src": "config.html",
@@ -31,5 +31,11 @@
   },
   "devDependencies": {
     "less": "~1.4.2"
+  },
+  "dependencies": {
+    "bson": "~0.2.2",
+    "superagent": "~0.15.4",
+    "crypto": "0.0.3",
+    "querystring": "~0.2.0"
   }
 }
