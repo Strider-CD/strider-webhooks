@@ -3,7 +3,7 @@ var utils = require('./utils')
 
 module.exports = {
   // run for each job
-  init: function (config, job, cb) {
+  init: function (config, job, context, cb) {
     var hooks = utils.makeWebHooks(config, job)
     cb(null, {
       listen: function (io, context) {
