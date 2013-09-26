@@ -5,8 +5,8 @@ var ObjectID = require('bson').ObjectID
 module.exports = {
   config: [{
     id: String,
-    // TODO do we want configurable triggers?
-    // trigger: {type: String, default: 'job.done'},
+    // TODO do we want configurable triggers? Currently we only support job.done
+    trigger: {type: String, default: 'job.done'},
     url: String,
     secret: String,
     format: String
@@ -28,6 +28,7 @@ module.exports = {
         id: id,
         trigger: req.body.trigger || 'job.done',
         url: req.body.url,
+        secret: req.body.secret,
         format: req.body.format
       })
       req.pluginConfig(hooks, function (err) {
