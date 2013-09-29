@@ -1,5 +1,5 @@
 
-var utils = require('./utils')
+var utils = require('./lib/utils')
 
 module.exports = {
   // run for each job
