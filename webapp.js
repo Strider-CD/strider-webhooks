@@ -14,7 +14,7 @@ module.exports = {
   // global events
   listen: function (io, context) {
     io.on('plugin.webhooks.fire', function (url, secret, payload) {
-      utils.fire(hook.url, hook.secret, payload)
+      utils.fire(url, secret, payload)
     })
   },
   // prefixed by /:repo/:name/api/:pluginname
@@ -42,7 +42,7 @@ module.exports = {
       for (var i=0; i<hooks.length; i++) {
         if (hooks[i].id === req.params.id) {
           found = i
-          break
+          break;
         }
       }
       if (found === -1) {
@@ -60,7 +60,7 @@ module.exports = {
       for (var i=0; i<hooks.length; i++) {
         if (hooks[i].id === req.params.id) {
           found = i
-          break
+          break;
         }
       }
       if (found === -1) {

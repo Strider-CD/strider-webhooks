@@ -1,7 +1,10 @@
 
-build: less
+test: lint
+	@./node_modules/.bin/mocha -R spec
 
-less: static/project_config.css
+tolint := *.js *.json static lib
 
-static/project_config.css: static/project_config.less
-	./node_modules/.bin/lessc $< > $@
+lint:
+	@jshint --verbose $(tolint)
+
+.PHONY: test lint watch build less

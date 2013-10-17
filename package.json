@@ -24,7 +24,9 @@
     "worker": "worker.js",
     "webapp": "webapp.js",
     "icon": "icon.png",
-    "config": true
+    "config": {
+      "controller": "WebhooksCtrl"
+    }
   },
   "devDependencies": {
     "less": "~1.4.2"
