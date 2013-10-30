@@ -30,7 +30,8 @@
   },
   "devDependencies": {
     "less": "~1.4.2",
-    "jshint": "~2.3.0"
+    "jshint": "~2.3.0",
+    "mocha": "~1.13.0"
   },
   "dependencies": {
     "bson": "~0.2.2",
