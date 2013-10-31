@@ -4,6 +4,7 @@ app.controller('WebhooksCtrl', ['$scope', function ($scope) {
     ar.splice(ar.indexOf(item), 1);
   }
   $scope.hooks = $scope.pluginConfig('webhooks') || [];
+  if (!Array.isArray($scope.hooks)) $scope.hooks = [];
   if (!$scope.hooks.length) $scope.hooks.push({});
 
   $scope.remove = function (hook) {
