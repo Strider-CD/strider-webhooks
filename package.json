@@ -1,8 +1,8 @@
 {
   "name": "strider-webhooks",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Enables strider to fire webhooks based on certain events",
-  "main": "index.js",
+  "main": "webapp.js",
   "scripts": {
     "test": "make test"
   },
