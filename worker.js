@@ -25,6 +25,7 @@ module.exports = {
             context.comment('Firing webhook ' + hook.title)
             try {
               var payload = hook.prepare(data, job)
+              payload.data.deploy_exitcode = 0;
               io.emit('plugin.webhooks.fire', hook.url, hook.secret, payload)
             } catch (e) {
               context.comment('Failed to prepare webhook payload: ' + e.message);
