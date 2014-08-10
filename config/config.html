@@ -2,22 +2,22 @@
   <fieldset>
     <legend>Webhooks</legend>
     <div class="alert alert-success hide"></div>
-    <p>
-      Target URLs will receive a HTTP POST from Strider
-      with a JSON payload on each project test run. These
-      enable you to receive and process real-time push
-      notifications from our system. Push notifications
-      are signed cryptographically with HMAC-SHA1 using a
-      shared secret so you can verify their
-      authenticity. Signatures are transmitted in
-      the
-      <a href="http://pubsubhubbub.googlecode.com/svn/trunk/pubsubhubbub-core-0.3.html#authednotify">
-        X-Signature-Hub header.
-      </a>
-      <a href="https://gist.github.com/3029840">See a sample payload.</a>
-    </p>
     <div class="row-fluid">
-      <div class="span10">
+        <p>
+            Target URLs will receive a HTTP POST from Strider
+            with a JSON payload on each project test run. These
+            enable you to receive and process real-time push
+            notifications from our system. Push notifications
+            are signed cryptographically with HMAC-SHA1 using a
+            shared secret so you can verify their
+            authenticity. Signatures are transmitted in
+            the
+            <a href="http://pubsubhubbub.googlecode.com/svn/trunk/pubsubhubbub-core-0.3.html#authednotify">
+                X-Signature-Hub header.
+            </a>
+            <a href="https://gist.github.com/3029840">See a sample payload.</a>
+        </p>
+      <div class="span9">
         <table class="table">
           <thead>
             <th>Hook Title</th>
