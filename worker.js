@@ -13,6 +13,7 @@ module.exports = {
         function onTested (id, data){
           io.removeListener('job.status.tested', onTested);
           hooks.forEach(function (hook) {
+            console.log(hook.trigger)
             if(hook.trigger === 'test'){
               context.comment('Firing Test webhook ' + hook.title)
               try {
