@@ -22,7 +22,9 @@ module.exports = {
               }
             }
             else if(hook.trigger === 'deploy'){
-              io.on('job.status.deployed', onDeployed)
+              if(job.type === 'TEST_AND_DEPLOY'){
+                io.on('job.status.deployed', onDeployed)
+              }
               io.removeListener('job.status.tested', onTested);
             }
           })
