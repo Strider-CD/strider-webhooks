@@ -7,15 +7,12 @@ module.exports = {
     var hooks = utils.makeWebHooks(config || [], job)
     cb(null, {
       listen: function (io, context) {
-        io.on('job.status.tested', handleEvent)
-        io.on('job.status.deployed', handleEvent)
+        io.on('job.status.tested', onTested)
         
-        function handleEvent (id, data){
-
+        function onTested (id, data){
           hooks.forEach(function (hook) {
             if(hook.trigger === 'test'){
-              io.removeListener('job.status.tested', handleEvent);
-              io.removeListener('job.status.deployed', handleEvent);
+              io.removeListener('job.status.tested', onTested);
               context.comment('Firing Test webhook ' + hook.title)
               try {
                 var payload = hook.prepare(data, job)
@@ -25,8 +22,16 @@ module.exports = {
               }
             }
             else if(hook.trigger === 'deploy'){
-              io.removeListener('job.status.deployed', handleEvent);
-              io.removeListener('job.status.tested', handleEvent);
+              io.on('job.status.deployed', onDeployed)
+              io.removeListener('job.status.tested', onTested);
+            }
+          })
+        }
+
+        function onDeployed (id, data){
+          hooks.forEach(function (hook) {
+            if(hook.trigger === 'deploy'){
+              io.removeListener('job.status.deployed', onDeployed);
               context.comment('Firing Deploy webhook ' + hook.title)
               try {
                 var payload = hook.prepare(data, job)
