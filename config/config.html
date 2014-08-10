@@ -45,14 +45,14 @@
                         </button>
                     </td>
                 </form>
+                <td colspan="4">
+                    <textarea
+                            placeholder="You can put a custom payload format here"
+                            ng-model="hook.format">
+                    </textarea>
+                </td>
             </tr>
-              <td colspan="4">
-                <textarea
-                   placeholder="You can put a custom payload format here"
-                   ng-model="hook.format">
-                </textarea>
-              </td>
-            </tr>
+
           </tbody>
         </table>
         <button class="btn btn-success" ng-click="add()" ng-disabled="saving">Add</button>
