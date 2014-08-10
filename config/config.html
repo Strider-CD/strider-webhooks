@@ -1,12 +1,4 @@
 <div id="project_config_webhooks" class="tab-pane well">
-    <form class="form-inline">
-        <input type="text" class="input-small" placeholder="Email">
-        <input type="password" class="input-small" placeholder="Password">
-        <label class="checkbox">
-            <input type="checkbox"> Remember me
-        </label>
-        <button type="submit" class="btn">Sign in</button>
-    </form>
   <fieldset>
     <legend>Webhooks</legend>
     <div class="alert alert-success hide"></div>
@@ -35,22 +27,18 @@
           <tbody>
 
             <tr ng-repeat-start="hook in hooks">
-              <td><input type="text" ng-model="hook.title"></td>
-              <td><input type="text" ng-model="hook.url"></td>
-              <td><input type="text" ng-model="hook.secret"></td>
-              <td>
-                <label class="radio-inline">
-                  <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="Test"> Test
-                </label>
-                <label class="radio-inline">
-                   <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="Deploy"> Deploy
-                </label>
-              </td>
-              <td class="remove">
-                <button class="btn-sm btn-danger" ng-disabled="saving" ng-click="remove(hook)">
-                  <i class="icon-remove"></i>
-                </button>
-              </td>
+                <form class="form-inline">
+                    <td><input type="text" ng-model="hook.title"></td>
+                    <td><input type="text" ng-model="hook.url"></td>
+                    <td><input type="text" ng-model="hook.secret"></td>
+                    <label class="radio inline">
+                        <input type="radio" value="test"> Test
+                        <input type="radio" value="deploy"> Deploy
+                    </label>
+                    <button class="btn-sm btn-danger" ng-disabled="saving" ng-click="remove(hook)">
+                        <i class="icon-remove"></i>
+                    </button>
+                </form>
             </tr>
             <tr ng-repeat-end>
               <td colspan="4">
