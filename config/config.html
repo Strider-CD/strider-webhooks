@@ -33,15 +33,17 @@
                     <td><input type="text" ng-model="hook.secret"></td>
                     <td>
                         <label class="radio inline">
-                            <input type="radio" value="test" ng-model="hook.trigger" name="{{hook.id}}" id="{{hook.id}}">&nbsp;Test&nbsp;&nbsp;
+                            <input type="radio" value="test" ng-model="hook.trigger">&nbsp;Test&nbsp;&nbsp;
                         </label>
                         <label class="radio inline">
-                            <input type="radio" value="deploy" ng-model="hook.trigger" name="{{hook.id}}" id="{{hook.id}}">&nbsp;Deploy&nbsp;&nbsp;
+                            <input type="radio" value="deploy" ng-model="hook.trigger">&nbsp;Deploy&nbsp;&nbsp;
                         </label>
                     </td>
-                    <td><button class="btn-sm btn-danger" ng-disabled="saving" ng-click="remove(hook)">
-                        <i class="icon-remove"></i>
-                    </button></td>
+                    <td>
+                        <button class="btn-sm btn-danger" ng-disabled="saving" ng-click="remove(hook)">
+                            <i class="icon-remove"></i>
+                        </button>
+                    </td>
                 </form>
             </tr>
               <td colspan="4">
