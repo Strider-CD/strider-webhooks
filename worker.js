@@ -13,12 +13,14 @@ module.exports = {
         function onTested (id, data){
           io.removeListener('job.status.tested', onTested);
           hooks.forEach(function (hook) {
-            context.comment('Firing Test webhook ' + hook.title)
-            try {
-              var payload = hook.prepare(data, job)
-              io.emit('plugin.webhooks.fire', hook.url, hook.secret, payload)
-            } catch (e) {
-              context.comment('Failed to prepare webhook payload: ' + e.message);
+            if(hook.trigger === 'test'){
+              context.comment('Firing Test webhook ' + hook.title)
+              try {
+                var payload = hook.prepare(data, job)
+                io.emit('plugin.webhooks.fire', hook.url, hook.secret, payload)
+              } catch (e) {
+                context.comment('Failed to prepare webhook payload: ' + e.message);
+              }
             }
           })
         }
