@@ -30,12 +30,15 @@
               <td><input ng-model="hook.url"></td>
               <td><input ng-model="hook.secret"></td>
               <td>
-                <label class="radio-inline">
-                  <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="Test"> Test
-                </label>
-                <label class="radio-inline">
-                   <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="Deploy"> Deploy
-                </label>
+              <input type="select">
+                <select class="form-control">
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                </select>
+               </input>
               </td>
               <td class="remove">
                 <button class="btn-sm btn-danger" ng-disabled="saving" ng-click="remove(hook)">
