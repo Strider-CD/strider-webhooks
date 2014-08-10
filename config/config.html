@@ -22,7 +22,7 @@
             <th>TargetURL for HTTP Post</th>
             <th>Shared secret for HMAC-SHA1 signature</th>
             <th>Hook Trigger</th>
-            <th>Delet</th>
+            <th>Delete</th>
           </thead>
           <tbody>
 
@@ -31,10 +31,14 @@
                     <td><input type="text" ng-model="hook.title"></td>
                     <td><input type="text" ng-model="hook.url"></td>
                     <td><input type="text" ng-model="hook.secret"></td>
-                    <label class="radio inline">
-                        <td><input type="radio" value="test" name="optionsRadios" id="optionsRadios1">&nbsp;Test&nbsp;&nbsp;
-                        <input type="radio" value="deploy" name="optionsRadios" id="optionsRadios2">&nbsp;Deploy</td>
-                    </label>
+                    <td>
+                        <label class="radio inline">
+                            <input type="radio" value="test" name="optionsRadios" id="optionsRadios1">&nbsp;Test&nbsp;&nbsp;
+                        </label>
+                        <label class="radio inline">
+                            <input type="radio" value="deploy" name="optionsRadios" id="optionsRadios2">&nbsp;Deploy&nbsp;&nbsp;
+                        </label>
+                    </td>
                     <td><button class="btn-sm btn-danger" ng-disabled="saving" ng-click="remove(hook)">
                         <i class="icon-remove"></i>
                     </button></td>
