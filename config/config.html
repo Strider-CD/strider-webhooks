@@ -29,7 +29,14 @@
               <td><input ng-model="hook.title"></td>
               <td><input ng-model="hook.url"></td>
               <td><input ng-model="hook.secret"></td>
-              <td><input ng-model="hook.trigger"></td>
+              <td>
+                <label class="radio-inline">
+                  <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="Test"> Test
+                </label>
+                <label class="radio-inline">
+                   <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="Deploy"> Deploy
+                </label>
+              </td>
               <td class="remove">
                 <button class="btn btn-danger" ng-disabled="saving" ng-click="remove(hook)">
                   <i class="icon-remove"></i>
