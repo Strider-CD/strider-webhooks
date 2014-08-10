@@ -1,41 +1,51 @@
-<div id="project_config_webhooks" class="well">
+<div id="project_config_webhooks" class="tab-pane well">
   <fieldset>
     <legend>Webhooks</legend>
     <div class="alert alert-success hide"></div>
     <p>
-      Target URLs will receive a HTTP POST from Strider
-      with a JSON payload on each project test run. These
-      enable you to receive and process real-time push
-      notifications from our system. Push notifications
-      are signed cryptographically with HMAC-SHA1 using a
-      shared secret so you can verify their
-      authenticity. Signatures are transmitted in
-      the
-      <a href="http://pubsubhubbub.googlecode.com/svn/trunk/pubsubhubbub-core-0.3.html#authednotify">
-        X-Signature-Hub header.
-      </a>
-      <a href="https://gist.github.com/3029840">See a sample payload.</a>
-    </p>
-    <div class="row-fluid">
-      <div class="span9">
+            Target URLs will receive a HTTP POST from Strider
+            with a JSON payload on each project test run. These
+            enable you to receive and process real-time push
+            notifications from our system. Push notifications
+            are signed cryptographically with HMAC-SHA1 using a
+            shared secret so you can verify their
+            authenticity. Signatures are transmitted in
+            the
+            <a href="http://pubsubhubbub.googlecode.com/svn/trunk/pubsubhubbub-core-0.3.html#authednotify">
+                X-Signature-Hub header.
+            </a>
+            <a href="https://gist.github.com/3029840">See a sample payload.</a>
+      </p>
         <table class="table">
           <thead>
             <th>Hook Title</th>
             <th>TargetURL for HTTP Post</th>
             <th>Shared secret for HMAC-SHA1 signature</th>
+            <th>Hook Trigger</th>
+            <th>Delete</th>
           </thead>
           <tbody>
-            <tr ng-repeat-start="hook in hooks">
-              <td><input ng-model="hook.title"></td>
-              <td><input ng-model="hook.url"</td>
-              <td><input ng-model="hook.secret"></td>
-              <td class="remove">
-                <button class="btn btn-danger" ng-disabled="saving" ng-click="remove(hook)">
-                  <i class="icon-remove"></i>
-                </button>
-              </td>
+
+            <tr ng-repeat="hook in hooks">
+                <form class="form-inline">
+                    <td><input type="text" ng-model="hook.title"></td>
+                    <td><input type="text" ng-model="hook.url"></td>
+                    <td><input type="text" ng-model="hook.secret"></td>
+                    <td>
+                        <label class="radio inline">
+                            <input type="radio" value="test" ng-model="hook.trigger">&nbsp;Test&nbsp;&nbsp;
+                        </label>
+                        <label class="radio inline">
+                            <input type="radio" value="deploy" ng-model="hook.trigger">&nbsp;Deploy&nbsp;&nbsp;
+                        </label>
+                    </td>
+                    <td>
+                        <button class="btn-sm btn-danger" ng-disabled="saving" ng-click="remove(hook)">
+                            <i class="icon-remove"></i>
+                        </button>
+                    </td>
+                </form>
             </tr>
-            <tr ng-repeat-end>
               <td colspan="4">
                 <textarea
                    placeholder="You can put a custom payload format here"
@@ -47,7 +57,5 @@
         </table>
         <button class="btn btn-success" ng-click="add()" ng-disabled="saving">Add</button>
         <button class="btn" ng-click="save()" ng-disabled="saving">Save Hooks</button>
-      </div>
-    </div>
   </fieldset>
 </div>
