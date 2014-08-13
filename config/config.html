@@ -26,7 +26,7 @@
           </thead>
           <tbody>
 
-            <tr ng-repeat="hook in hooks">
+            <tr ng-repeat-start="hook in hooks">
                 <form class="form-inline">
                     <td><input type="text" ng-model="hook.title"></td>
                     <td><input type="text" ng-model="hook.url"></td>
@@ -44,15 +44,17 @@
                             <i class="icon-remove"></i>
                         </button>
                     </td>
+                    <tr>
+                        <td colspan="4">
+                            <textarea
+                                    placeholder="You can put a custom payload format here"
+                                    ng-model="hook.format">
+                            </textarea>
+                        </td>
+                    </tr>
                 </form>
             </tr>
-              <td colspan="4">
-                <textarea
-                   placeholder="You can put a custom payload format here"
-                   ng-model="hook.format">
-                </textarea>
-              </td>
-            </tr>
+            <tr ng-repeat-end></tr>
           </tbody>
         </table>
         <button class="btn btn-success" ng-click="add()" ng-disabled="saving">Add</button>
