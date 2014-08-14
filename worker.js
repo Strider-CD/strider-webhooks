@@ -9,7 +9,6 @@ module.exports = {
       listen: function (io, context) {
         io.on('job.status.tested', onTested)
         if(job.type === 'TEST_AND_DEPLOY'){
-          console.log('register deploy listener')
           io.on('job.status.deployed', onDeployed)
         }
         function onTested (id, data){
@@ -26,7 +25,6 @@ module.exports = {
           });
           io.removeListener('job.status.tested', onTested);
           if (data.exitCode !== 0 && job.type === 'TEST_AND_DEPLOY'){
-            console.log('remove deploy listener')
             io.removeListener('job.status.deployed', onDeployed);
           }
         }
@@ -44,7 +42,6 @@ module.exports = {
               }
             }
           })
-          console.log('remove deploy listen')
           io.removeListener('job.status.deployed', onDeployed);
         }
       }
