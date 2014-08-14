@@ -25,7 +25,7 @@ module.exports = {
           });
           io.removeListener('job.status.tested', onTested);
           if (data.exitCode !== 0 && job.type === 'TEST_AND_DEPLOY'){
-            //io.removeListener('job.status.deployed', onDeployed);
+            io.removeListener('job.status.deployed', onDeployed);
           }
         }
 
