@@ -9,7 +9,7 @@ module.exports = {
       listen: function (io, context) {
         io.on('job.status.tested', onTested)
         if(job.type = 'TEST_AND_DEPLOY'){
-          io.on('job.status.deployed', onDeployed)
+          //io.on('job.status.deployed', onDeployed)
         }
         function onTested (id, data){
           hooks.forEach(function (hook) {
