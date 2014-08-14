@@ -8,9 +8,12 @@ module.exports = {
     cb(null, {
       listen: function (io, context) {
         io.on('job.status.tested', onTested)
+
+        // add deploy listener if job will be deploying
         if(job.type === 'TEST_AND_DEPLOY'){
           io.on('job.status.deployed', onDeployed)
         }
+
         function onTested (id, data){
           hooks.forEach(function (hook) {
             if(hook.trigger === 'test'){
@@ -23,7 +26,9 @@ module.exports = {
               }
             }
           });
+          //always remove test listener
           io.removeListener('job.status.tested', onTested);
+          //remove deploy listener if tests failed and one was registered
           if (data.exitCode !== 0 && job.type === 'TEST_AND_DEPLOY'){
             io.removeListener('job.status.deployed', onDeployed);
           }
@@ -42,6 +47,7 @@ module.exports = {
               }
             }
           })
+          //always remove deploy listener
           io.removeListener('job.status.deployed', onDeployed);
         }
       }
