@@ -8,7 +8,9 @@ module.exports = {
     cb(null, {
       listen: function (io, context) {
         io.on('job.status.tested', onTested)
-        
+        if(job.type = 'TEST_AND_DEPLOY'){
+          io.on('job.status.deployed', onDeployed)
+        }
         function onTested (id, data){
           hooks.forEach(function (hook) {
             if(hook.trigger === 'test'){
@@ -20,13 +22,11 @@ module.exports = {
                 context.comment('Failed to prepare webhook payload: ' + e.message);
               }
             }
-            else if(hook.trigger === 'deploy'){
-              if(job.type === 'TEST_AND_DEPLOY'){
-                io.on('job.status.deployed', onDeployed)
-              }
-            }
           });
           io.removeListener('job.status.tested', onTested);
+          if (data.exitCode !== 0 && job.type === 'TEST_AND_DEPLOY'){
+            io.removeListener('job.status.deployed', onDeployed);
+          }
         }
 
         function onDeployed (id, data){
