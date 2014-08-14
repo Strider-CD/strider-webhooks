@@ -8,6 +8,7 @@ module.exports = {
     cb(null, {
       listen: function (io, context) {
         io.on('job.status.tested', onTested)
+        console.log(job.type);
         if(job.type = 'TEST_AND_DEPLOY'){
           //io.on('job.status.deployed', onDeployed)
         }
