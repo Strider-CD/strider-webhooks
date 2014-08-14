@@ -12,7 +12,6 @@ module.exports = {
         function onTested (id, data){
           hooks.forEach(function (hook) {
             if(hook.trigger === 'test'){
-              io.removeListener('job.status.tested', onTested);
               context.comment('Firing Test webhook ' + hook.title)
               try {
                 var payload = hook.prepare(data, job)
@@ -25,15 +24,14 @@ module.exports = {
               if(job.type === 'TEST_AND_DEPLOY'){
                 io.on('job.status.deployed', onDeployed)
               }
-              io.removeListener('job.status.tested', onTested);
             }
-          })
+          });
+          io.removeListener('job.status.tested', onTested);
         }
 
         function onDeployed (id, data){
           hooks.forEach(function (hook) {
             if(hook.trigger === 'deploy'){
-              io.removeListener('job.status.deployed', onDeployed);
               context.comment('Firing Deploy webhook ' + hook.title)
               try {
                 var payload = hook.prepare(data, job)
@@ -44,6 +42,7 @@ module.exports = {
               }
             }
           })
+          io.removeListener('job.status.deployed', onDeployed);
         }
       }
     })
