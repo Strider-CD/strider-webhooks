@@ -42,7 +42,7 @@ module.exports = {
               }
             }
           })
-          //io.removeListener('job.status.deployed', onDeployed);
+          io.removeListener('job.status.deployed', onDeployed);
         }
       }
     })
