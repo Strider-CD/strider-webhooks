@@ -1,4 +1,5 @@
-## Strider Webhooks
+strider-webhooks
+================
 
 This plugin enables strider to hit webhooks based on certain events.
 
