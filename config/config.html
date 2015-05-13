@@ -25,9 +25,9 @@
             <th>Shared secret for HMAC-SHA1 signature</th>
           </thead>
           <tbody>
-            <tr ng-repeat-start="hook in hooks">
+            <tr ng-repeat-start="hook in hooks track by $index">
               <td><input ng-model="hook.title"></td>
-              <td><input ng-model="hook.url"</td>
+              <td><input ng-model="hook.url"></td>
               <td><input ng-model="hook.secret"></td>
               <td class="remove">
                 <button class="btn btn-danger" ng-disabled="saving" ng-click="remove(hook)">
