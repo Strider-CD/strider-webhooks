@@ -17,21 +17,21 @@
       <a href="https://gist.github.com/3029840">See a sample payload.</a>
     </p>
     <div class="row-fluid">
-      <div class="span9">
+      <div class="span12">
         <table class="table">
           <thead>
             <th>Hook Title</th>
-            <th>TargetURL for HTTP Post</th>
+            <th>Target URL for HTTP Post</th>
             <th>Shared secret for HMAC-SHA1 signature</th>
           </thead>
           <tbody>
             <tr ng-repeat-start="hook in hooks track by $index">
-              <td><input ng-model="hook.title"></td>
-              <td><input ng-model="hook.url"></td>
-              <td><input ng-model="hook.secret"></td>
+              <td><input type="text" ng-model="hook.title"></td>
+              <td><input type="text" ng-model="hook.url"></td>
+              <td><input type="text" ng-model="hook.secret"></td>
               <td class="remove">
                 <button class="btn btn-danger" ng-disabled="saving" ng-click="remove(hook)">
-                  <i class="icon-remove"></i>
+                  <i class="fa fa-times"></i>
                 </button>
               </td>
             </tr>
@@ -45,8 +45,8 @@
             </tr>
           </tbody>
         </table>
-        <button class="btn btn-success" ng-click="add()" ng-disabled="saving">Add</button>
-        <button class="btn" ng-click="save()" ng-disabled="saving">Save Hooks</button>
+        <button class="btn btn-default" ng-click="add()" ng-disabled="saving">Add Hook</button>
+        <button class="btn btn-primary pull-right" ng-click="save()" ng-disabled="saving">Save</button>
       </div>
     </div>
   </fieldset>
