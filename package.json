@@ -34,9 +34,9 @@
     "mocha": "~1.13.0"
   },
   "dependencies": {
-    "bson": "~0.2.2",
-    "superagent": "~0.15.4",
+    "bson": "^3.0.2",
     "crypto": "0.0.3",
-    "querystring": "~0.2.0"
+    "querystring": "~0.2.0",
+    "superagent": "~0.15.4"
   }
 }
