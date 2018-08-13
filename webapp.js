@@ -1,5 +1,4 @@
-var ObjectID = require('bson').ObjectID
-
+var BSON = require('bson')
   , utils = require('./lib/utils')
 
 module.exports = {
@@ -22,7 +21,7 @@ module.exports = {
   // req.pluginConfig(config, cb(err)) -> set the config for this plugin
   routes: function (app) {
     app.post('/', function (req, res) {
-      var id = new ObjectID().toString()
+      var id = (new BSON()).toString()
         , hooks = req.pluginConfig()
       hooks.push({
         id: id,
